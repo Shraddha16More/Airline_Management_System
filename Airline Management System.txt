@@ -94,12 +94,6 @@ mysql> select*from flightcrew;
 +---------+-----------+-----------------+------------------+
 10 rows in set (0.00 sec)
 
-mysql> select*from itineray;
-ERROR 1146 (42S02): Table 'airline_reservation.itineray' doesn't exist
-mysql> select*from itinery;
-ERROR 1146 (42S02): Table 'airline_reservation.itinery' doesn't exist
-mysql> select*from itinary;
-ERROR 1146 (42S02): Table 'airline_reservation.itinary' doesn't exist
 mysql> select*from itinerary;
 +--------------+--------------+-----------+
 | Itinerary_ID | Passenger_ID | Flight_ID |
