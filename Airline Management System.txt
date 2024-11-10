@@ -1,0 +1,149 @@
+mysql> show databases;
++---------------------+
+| Database            |
++---------------------+
+| airline_reservation |
+| information_schema  |
+| mysql               |
+| performance_schema  |
+| sys                 |
++---------------------+
+5 rows in set (0.02 sec)
+
+mysql> use airline_reservation
+Database changed
+mysql> show tables;
++-------------------------------+
+| Tables_in_airline_reservation |
++-------------------------------+
+| aircraft                      |
+| booking                       |
+| flightcrew                    |
+| flights                       |
+| itinerary                     |
+| passengers                    |
+| pricingandfare                |
++-------------------------------+
+7 rows in set (0.01 sec)
+
+mysql> select*from aircraft;
++-------------+-----------------+---------+----------------+
+| Aircraft_ID | Registration_No | Model   | Seating_Config |
++-------------+-----------------+---------+----------------+
+|           1 | N12345          | Model B |            150 |
+|           2 | N23456          | Model C |            180 |
+|           3 | N34567          | Model D |            350 |
+|           4 | N45678          | Model E |            220 |
+|           5 | N56789          | Model A |            250 |
+|           6 | N67890          | Model B |            500 |
+|           7 | N78901          | Model C |            300 |
+|           8 | N89012          | Model D |            270 |
+|           9 | N90123          | Model E |            200 |
+|          10 | N01234          | Model A |            240 |
++-------------+-----------------+---------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> select*from booking;
++------------+-----------+--------------+--------------------+-----------------+
+| Booking_ID | Flight_ID | Passenger_ID | Reservation_Status | Payment_Details |
++------------+-----------+--------------+--------------------+-----------------+
+|          1 |         1 |            1 | Confirmed          | Credit Card     |
+|          2 |         1 |            2 | Pending            | PayPal          |
+|          3 |         2 |            3 | Confirmed          | Credit Card     |
+|          4 |         3 |            1 | Pending            | PayPal          |
+|          5 |         5 |            5 | Confirmed          | Credit Card     |
+|          6 |         5 |            9 | Confirmed          | Credit Card     |
+|          7 |         6 |            7 | Confirmed          | PayPal          |
+|          8 |         7 |            8 | Pending            | Credit Card     |
+|          9 |         6 |            9 | Confirmed          | PayPal          |
+|         10 |         3 |            5 | Confirmed          | Credit Card     |
++------------+-----------+--------------+--------------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select*from flights;
++-----------+---------------+---------+-------------+---------------------+---------------------+-------------+
+| Flight_ID | Flight_Number | Origin  | Destination | Departure_Time      | Arrival_Time        | Aircraft_ID |
++-----------+---------------+---------+-------------+---------------------+---------------------+-------------+
+|         1 | FL101         | USA     | Canada      | 2024-03-28 08:00:00 | 2024-03-28 11:00:00 |           8 |
+|         2 | FL102         | Canada  | India       | 2024-03-29 12:00:00 | 2024-03-29 15:00:00 |           2 |
+|         3 | FL103         | India   | Korea       | 2024-03-30 10:00:00 | 2024-03-30 13:00:00 |           1 |
+|         4 | FL104         | France  | USA         | 2024-03-31 14:00:00 | 2024-03-31 17:00:00 |           5 |
+|         5 | FL105         | USA     | Germany     | 2024-04-01 09:00:00 | 2024-04-01 10:30:00 |           2 |
+|         6 | FL106         | Germany | India       | 2024-04-02 15:00:00 | 2024-04-02 18:00:00 |           6 |
+|         7 | FL107         | India   | Korea       | 2024-04-03 11:00:00 | 2024-04-03 13:30:00 |           1 |
+|         8 | FL108         | Mexico  | Thailand    | 2024-04-04 16:00:00 | 2024-04-04 19:00:00 |           5 |
+|         9 | FL109         | USA     | Italy       | 2024-04-05 08:30:00 | 2024-04-05 10:00:00 |           6 |
+|        10 | FL110         | Italy   | USA         | 2024-04-06 13:00:00 | 2024-04-06 15:30:00 |           1 |
++-----------+---------------+---------+-------------+---------------------+---------------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select*from flightcrew;
++---------+-----------+-----------------+------------------+
+| Crew_ID | Flight_ID | Name            | Position         |
++---------+-----------+-----------------+------------------+
+|       1 |         1 | Sarah Johnson   | Pilot            |
+|       2 |         1 | David Lee       | Flight Attendant |
+|       3 |         2 | Jessica Brown   | Pilot            |
+|       4 |         3 | Ryan Wilson     | Pilot            |
+|       5 |         2 | Olivia Taylor   | Flight Attendant |
+|       6 |         5 | Ethan Martinez  | Pilot            |
+|       7 |         3 | Sophia Anderson | Flight Attendant |
+|       8 |         7 | Liam Garcia     | Pilot            |
+|       9 |         8 | Mia Rodriguez   | Flight Attendant |
+|      10 |         9 | John Smith      | Flight Attendant |
++---------+-----------+-----------------+------------------+
+10 rows in set (0.00 sec)
+
+mysql> select*from itineray;
+ERROR 1146 (42S02): Table 'airline_reservation.itineray' doesn't exist
+mysql> select*from itinery;
+ERROR 1146 (42S02): Table 'airline_reservation.itinery' doesn't exist
+mysql> select*from itinary;
+ERROR 1146 (42S02): Table 'airline_reservation.itinary' doesn't exist
+mysql> select*from itinerary;
++--------------+--------------+-----------+
+| Itinerary_ID | Passenger_ID | Flight_ID |
++--------------+--------------+-----------+
+|            1 |            1 |         1 |
+|            2 |            3 |         2 |
+|            3 |            5 |         5 |
+|            4 |            9 |         5 |
+|            5 |            7 |         6 |
+|            6 |            9 |         6 |
+|            7 |            5 |         3 |
++--------------+--------------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> select*from passengers;
++--------------+-----------------+---------------------+-----------------+
+| Passenger_ID | Name            | Contact_Information | Seat_Preference |
++--------------+-----------------+---------------------+-----------------+
+|            1 | John Smith      | john@example.com    | Window          |
+|            2 | Emily Johnson   | emily@example.com   | Aisle           |
+|            3 | Michael Brown   | michael@example.com | Aisle           |
+|            4 | Emma Davis      | emma@example.com    | Window          |
+|            5 | Daniel Wilson   | daniel@example.com  | Aisle           |
+|            6 | Olivia Taylor   | olivia@example.com  | Window          |
+|            7 | Ethan Martinez  | ethan@example.com   | Window          |
+|            8 | Sophia Anderson | sophia@example.com  | Aisle           |
+|            9 | Liam Garcia     | liam@example.com    | Aisle           |
+|           10 | Mia Rodriguez   | mia@example.com     | Window          |
++--------------+-----------------+---------------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select*from pricingandfare;
++---------+--------------+-----------+------------+--------+
+| Fare_ID | Route        | Flight_ID | Seat_Class | Price  |
++---------+--------------+-----------+------------+--------+
+|       1 | USA-Canada   |         1 | Economy    | 200.00 |
+|       2 | USA-Canada   |         1 | Business   | 500.00 |
+|       3 | Canada-India |         2 | Economy    | 250.00 |
+|       4 | Canada-India |         2 | Business   | 600.00 |
+|       5 | India-Korea  |         3 | Economy    | 180.00 |
+|       6 | India-Korea  |         3 | Business   | 550.00 |
+|       7 | France-USA   |         4 | Economy    | 220.00 |
+|       8 | France-USA   |         4 | Business   | 600.00 |
+|       9 | USA-Germany  |         5 | Economy    | 150.00 |
+|      10 | USA-Germany  |         5 | Business   | 450.00 |
++---------+--------------+-----------+------------+--------+
+10 rows in set (0.00 sec)
